@@ -53,3 +53,30 @@ body{
     background-color: var(--secondrayColor);
     border-radius: 50px;
 }
+
+.main{
+    width: 100%;
+    height: max-content;
+    min-height: 100vh;
+     padding: 2%;
+    background-color: var(--softGreenColor);
+    margin-left: 250%;
+}
+
+.main-navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-toggle{
+    display: none;
+}
+.search{
+    width: 60%;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--whiteColor);
+    border-radius: 20px;
+}
