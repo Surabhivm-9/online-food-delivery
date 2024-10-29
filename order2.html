@@ -164,7 +164,7 @@
 
     <script>
         // Populate the bill from localStorage
-        document.addEventListener("DOMContentLoaded", () => {
+       /* document.addEventListener("DOMContentLoaded", () => {
             const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
             const totalCost = localStorage.getItem('totalCost');
             const billTable = document.getElementById('bill-table');
@@ -182,9 +182,39 @@
                 billTable.appendChild(row);
             });
             
-            // Set total cost
+            
             totalCostElem.textContent = totalCost;
+        });*/
+        
+    //Populate the bill from localStorage
+    document.addEventListener("DOMContentLoaded", () => {
+        const orderDetails = JSON.parse(localStorage.getItem('orderDetails')) || [];
+        const billTable = document.getElementById('bill-table');
+        const totalCostElem = document.getElementById('total-cost');
+
+        let grandTotal = 0; // Variable to store the grand total
+
+        // Populate rows
+        orderDetails.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.name}</td>
+                <td>${item.quantity}</td>
+                <td>${item.price}</td>
+                <td>${item.total}</td>
+            `;
+            billTable.appendChild(row);
+
+            // Calculate grand total
+            grandTotal += item.total;
         });
+
+        // Display the grand total
+        totalCostElem.textContent = grandTotal;
+        localStorage.setItem('total-Cost', grandTotal); // Ensure it's saved for future use
+    });
+
+
     </script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
